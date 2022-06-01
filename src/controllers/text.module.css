@@ -1,0 +1,59 @@
+.steps {
+  overflow: auto;
+}
+
+.stepsSlider {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+}
+
+.step::after {
+  display: block;
+
+  flex: 1;
+  width: 100%;
+  min-width: 2rem;
+  height: 2px;
+
+  margin: 0.5rem;
+
+  background: var(--sub-color);
+
+  content: "";
+}
+
+.stepButton {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+
+  width: 2rem;
+  height: 2rem;
+  
+  font-size: 0.875rem;
+  
+  border-radius: 100%;
+  border-color: var(--sub-color);
+  border-width: 2px;
+  border-style: solid;
+  color: var(--sub-color);
+  
+  cursor: pointer;
+  
+  background: none;
+}
+
+.stepButtonActive {
+  background-color: var(--sub-color);
+  color: var(--bg-color);
+}

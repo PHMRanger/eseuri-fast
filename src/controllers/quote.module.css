@@ -15,13 +15,27 @@
 .words {
   display: flex;
   flex-wrap: wrap;
-  cursor: default;
+  cursor: pointer;
+  
+  align-self: center;
+  
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently */
 }
 
 .word {
   font-size: 1.5rem;
   line-height: 1.5rem;
   margin: .37rem;
+}
+
+.wordHidden {
+  color: rgba(0,0,0,0);
+  border-bottom: 2px solid var(--sub-color);
 }
 
 .letterBackground {
@@ -36,10 +50,18 @@
   color: var(--error-color);
 }
 
+.letterHidden {
+  color: rgba(0,0,0,0);
+}
+
 .wordsController {
   position: relative;
   display: flex;
   justify-content: center;
+  
+  align-self: center;
+  
+  padding: 2rem 0;
 }
 
 .caret {

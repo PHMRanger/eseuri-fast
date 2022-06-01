@@ -9,6 +9,12 @@
   --error-extra-color: #7e2a33;
   --colorful-error-color: #ca4754;
   --colorful-error-extra-color: #7e2a33;
+  
+  --roundness: 0.5rem;
+}
+
+* {
+  scrollbar-width: thin;
 }
 
 body {
@@ -16,6 +22,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,4 +34,49 @@ code {
 
 * {
   box-sizing: border-box;
+}
+
+input, textarea {
+	background: var(--sub-alt-color);
+	border: none;
+	border-radius: var(--roundness);
+	caret-color: var(--main-color);
+	color: var(--text-color);
+	font-size: 1rem;
+	outline: none;
+	padding: .5rem;
+}
+
+button {
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.125s, color 0.125s;
+  padding: 0.5rem;
+  border-radius: var(--roundness);
+  background: var(--sub-alt-color);
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  align-content: center;
+  height: min-content;
+  height: -moz-min-content;
+  appearance: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button:hover {
+  color: var(--bg-color);
+  background: var(--text-color);
+  outline: none;
+}
+
+button:focus {
+  outline: 2px solid var(--text-color);
+}
+
+button:active {
+  background: var(--sub-color);
+  color: var(--bg-color);
 }

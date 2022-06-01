@@ -1,0 +1,18 @@
+.createText {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.texts {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+  gap: 0.5rem;
+}
