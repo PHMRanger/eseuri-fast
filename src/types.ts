@@ -1,6 +1,6 @@
 export interface IWord {
   content: string;
-  learned: boolean;
+  schedulerInfo: ISchedulerInfo;
 };
 
 export interface IParagraph {
@@ -10,4 +10,10 @@ export interface IParagraph {
 export interface IText {
   paragraphs: IParagraph[];
   name: string;
+};
+
+export interface ISchedulerInfo {
+  learningSteps: number;
+  learnedAt?: Date;
+  interval: number;
 };

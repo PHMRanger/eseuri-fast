@@ -1,0 +1,88 @@
+.text {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+}
+
+.offtext {
+  opacity: 0.32;
+}
+
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  
+  align-self: center;
+  
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently */
+}
+
+.word {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin: .37rem;
+}
+
+.wordHidden {
+  color: rgba(0,0,0,0);
+  border-bottom: 2px solid var(--sub-color);
+}
+
+.letterBackground {
+  color: var(--sub-color);
+}
+
+.letterCorrect {
+  color: var(--text-color);
+}
+
+.letterError {
+  color: var(--error-color);
+}
+
+.letterHidden {
+  color: rgba(0,0,0,0);
+}
+
+.textInput {
+  border: none;
+  cursor: default;
+  display: block;
+  margin: 0;
+  opacity: 0;
+  outline: none;
+  padding: 0;
+  pointer-events: none;
+  position: fixed;
+  resize: none;
+  z-index: -1;
+}
+
+.caret {
+  position: absolute;
+  animation: caretFlashSmooth 1s infinite;
+  width: 2px;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--caret-color);
+  transform: scale(1.45);
+  
+  top: 1px;
+  left: 6px;
+}
+
+@keyframes caretFlashSmooth {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

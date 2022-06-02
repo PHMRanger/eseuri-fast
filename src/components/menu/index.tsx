@@ -1,4 +1,5 @@
 import { Component, createResource, createSignal, For } from "solid-js";
+import * as scheduler from "../../scheduler";
 import { getTexts, storeText } from "../../storage";
 import { IParagraph, IText } from "../../types";
 
@@ -7,7 +8,7 @@ import styles from "./menu.module.css";
 const MAX_PARAGRAH_CHARACTERS = 402;
 
 const createParagraph = (raw: string): IParagraph => {
-  const words = raw.split(" ").map((content) => ({ content, learned: false }));
+  const words = raw.split(" ").map((content) => ({ content, schedulerInfo: scheduler.initInfo() }));
   return { words };
 }
 

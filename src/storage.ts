@@ -7,6 +7,10 @@ export const storeText = (text: IText) => {
   localStorage.setItem(`eseuri:${text.name}`, JSON.stringify(text));
 };
 
+export const updateText = (text: IText) => {
+  localStorage.setItem(`eseuri:${text.name}`, JSON.stringify(text));
+};
+
 export const getTexts = (): string[] => {
   const texts_raw = localStorage.getItem("eseuri:texts");
   return texts_raw ? JSON.parse(texts_raw) : [];
