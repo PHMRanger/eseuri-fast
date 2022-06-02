@@ -1,8 +1,18 @@
-const getDifficultyKey = (name: string, stage: number) => {
-  return `eseuri:${name}:${stage}:difficulty`;
+import { IText } from "./types";
+
+export const storeText = (text: IText) => {
+  const texts = getTexts();
+
+  localStorage.setItem("eseuri:texts", JSON.stringify([...texts, text.name]));
+  localStorage.setItem(`eseuri:${text.name}`, JSON.stringify(text));
+};
+
+export const getTexts = (): string[] => {
+  const texts_raw = localStorage.getItem("eseuri:texts");
+  return texts_raw ? JSON.parse(texts_raw) : [];
+};
+
+export const getText = (name: string): IText => {
+  const text = localStorage.getItem(`eseuri:${name}`);
+  return text && JSON.parse(text);
 }
-
-const getDifficulty = (name: string, stage: number) => Number(localStorage.getItem(getDifficultyKey(name, stage)));
-const setDifficulty = (name: string, stage: number, value: any) => localStorage.setItem(getDifficultyKey(name, stage), value);
-
-export { getDifficulty, setDifficulty };

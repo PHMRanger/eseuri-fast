@@ -65,6 +65,7 @@ const Text: Component<ITextProps> = (props) => {
 
   return (
     <div>
+      {quote()}
     </div>
   );
 };

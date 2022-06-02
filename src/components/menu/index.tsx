@@ -1,4 +1,5 @@
-import { Component, For } from "solid-js";
+import { Component, createResource, createSignal, For } from "solid-js";
+import { getTexts, storeText } from "../../storage";
 import { IParagraph, IText } from "../../types";
 
 import styles from "./menu.module.css";
@@ -31,18 +32,6 @@ const createText = (name: string, raw: string): IText => {
   return { paragraphs, name };
 };
 
-const storeText = (text: IText) => {
-  const texts = getTexts();
-
-  localStorage.setItem("eseuri:texts", JSON.stringify([...texts, text.name]));
-  localStorage.setItem(`eseuri:${text.name}`, JSON.stringify(text));
-};
-
-const getTexts = (): string[] => {
-  const texts_raw = localStorage.getItem("eseuri:texts");
-  return texts_raw ? JSON.parse(texts_raw) : [];
-};
-
 const CreateTextInput: Component = (props) => {
   let nameRef: HTMLInputElement | undefined;
   let contentRef: HTMLInputElement | undefined;
@@ -62,15 +51,17 @@ const CreateTextInput: Component = (props) => {
   );
 };
 
-export const Menu = () => {
+export interface IMenuProps {
+  onTextClick?: (name: string) => void;
+};
+
+export const Menu: Component<IMenuProps> = (props) => {
   return (
     <div class={styles.menu}>
-      {/* <input ref={nameRef} placeholder="name" onPaste={onPaste}/>
-      <input placeholder="paste to create new text" onPaste={onPaste}/> */}
       <CreateTextInput />
       <div class={styles.texts}>
         <For each={getTexts()}>{(name) =>
-          <button>{name}</button>
+          <button onClick={() => props.onTextClick && props.onTextClick(name)}>{name}</button>
         }</For>
       </div>
     </div>
