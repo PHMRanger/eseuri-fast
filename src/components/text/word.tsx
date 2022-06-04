@@ -12,7 +12,7 @@ interface IWordProps extends IWord {
 };
 
 const m: { [key: string]: string } = {
-  ă: "a", â: "a", î: "i", ș: "s", ț: "t",
+  ă: "a", â: "a", î: "i", ș: "s", ț: "t", "”": "\"", "„": "\"",
   Ă: "A", Â: "A", Î: "I", Ș: "S", Ț: "T",
 };
 
