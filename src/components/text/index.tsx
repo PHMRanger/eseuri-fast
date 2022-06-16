@@ -3,7 +3,7 @@ import { Caret, Paragraph, wordEquality } from "./word";
 import { IText } from "../../types";
 
 import styles from "./text.module.css";
-import { storeText, updateText } from "../../storage";
+import { updateText } from "../../storage";
 import * as scheduler from "../../scheduler";
 
 const TextInput: Component<any> = (props) => {
@@ -105,8 +105,7 @@ const TextView: Component<{ text: IText, onChange?: (text: IText) => void }> = (
         }}
       />
 
-      <Paragraph class={styles.offtext} {...props.text.paragraphs[index() - 1]} />
-
+      <div>{index() + 1}/{props.text.paragraphs.length}</div>
       <div>
         <Paragraph
           onClick={() => inputRef?.focus()}
@@ -117,8 +116,7 @@ const TextView: Component<{ text: IText, onChange?: (text: IText) => void }> = (
 
         <Show when={focused()}><Caret left={caret()[0]} top={caret()[1]} /></Show>
       </div>
-
-      <Paragraph class={styles.offtext} {...props.text.paragraphs[index() + 1]} />
+      <div />
     </div>
   );
 }

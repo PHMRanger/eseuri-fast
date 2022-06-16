@@ -5,7 +5,7 @@ import { IParagraph, IText } from "../../types";
 
 import styles from "./menu.module.css";
 
-const MAX_PARAGRAH_CHARACTERS = 402;
+const MAX_PARAGRAH_CHARACTERS = 1200;
 
 const createParagraph = (raw: string): IParagraph => {
   const words = raw.split(" ").map((content) => ({ content, schedulerInfo: scheduler.initInfo() }));
@@ -15,33 +15,38 @@ const createParagraph = (raw: string): IParagraph => {
 const createText = (name: string, raw: string): IText => {
   const re = /[^\.!?\n]+[\.!?]/g;
 
-  const paragraphs: IParagraph[] = [];
+  const paragraphs: IParagraph[] = raw.split("\n").map((s) => {
+    return createParagraph(s);
+  });
 
-  let paragraph_raw = "";
+  // let paragraph_raw = "";
 
-  for (const [sentence] of raw.matchAll(re)) {
-    if (paragraph_raw.length + sentence.length > MAX_PARAGRAH_CHARACTERS) {
-      paragraphs.push(createParagraph(paragraph_raw.trim()));
-      paragraph_raw = sentence.trim();
-    } else {
-      paragraph_raw += " " + sentence.trim();
-    }
-  }
+  // for (const [sentence] of raw.matchAll(re)) {
+  //   if (paragraph_raw.length + sentence.length > MAX_PARAGRAH_CHARACTERS) {
+  //     paragraphs.push(createParagraph(paragraph_raw.trim()));
+  //     paragraph_raw = sentence.trim();
+  //   } else {
+  //     paragraph_raw += " " + sentence.trim();
+  //   }
+  // }
 
-  paragraphs.push(createParagraph(paragraph_raw.trim()));
+  // paragraphs.push(createParagraph(paragraph_raw.trim()));
+
 
   return { paragraphs, name };
 };
 
 const CreateTextInput: Component = (props) => {
   let nameRef: HTMLInputElement | undefined;
-  let contentRef: HTMLInputElement | undefined;
+  let contentRef: HTMLTextAreaElement | undefined;
 
   return (
     <div class={styles.createText}>
       <input ref={nameRef} required placeholder="insert name..." />
-      <input ref={contentRef} required placeholder="insert content..." />
+      <textarea ref={contentRef} rows={1} required placeholder="insert content..." />
       <button onClick={() => {
+        console.log(contentRef?.value);
+
         if (!nameRef || !nameRef.value) return;
         if (!contentRef || !contentRef.value) return;
 

@@ -22,6 +22,8 @@ export const updateInfo = (oldInfo: ISchedulerInfo, correct: boolean): ISchedule
 };
 
 export const isLearned = (info: ISchedulerInfo) => {
+  return false;
+
   if (info.learnedAt) {
     return new Date(info.learnedAt).getTime() + DAY * info.interval > Date.now();
   }
